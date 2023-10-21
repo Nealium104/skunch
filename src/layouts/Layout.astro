@@ -14,9 +14,11 @@ import { ViewTransitions } from 'astro:transitions'
 		<title>Skunch</title>
 	</head>
 	<ViewTransitions />
-	<body class="font-roboto-slab bg-off-white min-h-screen md:px-8">
+	<body class="font-roboto-slab bg-off-white min-h-screen px-4">
         <Nav />
-		<slot />
+		<div class="pt-12 md:pt-0">
+			<slot />
+		</div>
         <Footer />
 	</body>
 </html>
