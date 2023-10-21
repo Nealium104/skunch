@@ -1,5 +1,5 @@
 ---
-const {venue, feat, url, date} = Astro.props
+const {venue, note, url, date} = Astro.props
 const dateOptions = {
     year: "numeric",
     month: "numeric",
@@ -18,6 +18,6 @@ const dateOptions = {
 <a href={url} class="contents group">
     <div class="group-hover:scale-110 transition duration-110 group-hover:text-red">{venue}</div>
     <div class="group-hover:scale-110 transition duration-110 group-hover:text-red">{date.toLocaleString('en-US', dateOptions)}</div>
-    <div class="group-hover:scale-110 transition duration-110 group-hover:text-red">{feat}</div>
+    <div class="group-hover:scale-110 transition duration-110 group-hover:text-red">{note}</div>
 </a>
 
