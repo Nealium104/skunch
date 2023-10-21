@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets";
+const {name, short, long, img, width, height} = Astro.props
+---
+<div class="border-2 border-red flex items-center p-4">
+        <Image class="w-full aspect-square object-cover" src={img} width={width} height={height} alt={`Image of ${name}`}/>
+        <div class="flex flex-col px-4">
+            <h2 class="font-bangers text-2xl">{name}<h2>
+            <span class="italic text-black/50">{short}</span>
+        </div>
+    <p class="w-1/2">{long}</p>
+</li>
