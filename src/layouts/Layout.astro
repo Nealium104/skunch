@@ -1,6 +1,8 @@
 ---
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import '@fontsource/bangers'
+import '@fontsource-variable/roboto-slab'
 ---
 
 <html lang="en">
@@ -10,7 +12,7 @@ import Footer from '../components/Footer.astro'
 		<meta name="viewport" content="width=device-width" />
 		<title>Skunch</title>
 	</head>
-	<body>
+	<body class="font-roboto-slab bg-off-white min-h-screen md:px-8">
         <Nav />
 		<slot />
         <Footer />

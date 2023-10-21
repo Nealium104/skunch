@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import logoWord from '../../public/images/logoWord.png'
+---
+<nav class="h-20 flex justify-between">
+    <div class="w-32">
+        <Image src={logoWord} alt="Skunch logo" class="w-full" />
+    </div>
+    <ul class="flex gap-8 items-center justify-self-end">
+        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 px-4"><a href="/">About</a></li>
+        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 px-4"><a href="/">SkunchBucket</a></li>
+        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 px-4"><a href="/">Merch</a></li>
+        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 px-4"><a href="/">Contact</a></li>
+    </ul>
+</nav>
