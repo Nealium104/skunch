@@ -3,6 +3,7 @@ import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import '@fontsource/bangers'
 import '@fontsource-variable/roboto-slab'
+import { ViewTransitions } from 'astro:transitions'
 ---
 
 <html lang="en">
@@ -12,6 +13,7 @@ import '@fontsource-variable/roboto-slab'
 		<meta name="viewport" content="width=device-width" />
 		<title>Skunch</title>
 	</head>
+	<ViewTransitions />
 	<body class="font-roboto-slab bg-off-white min-h-screen md:px-8">
         <Nav />
 		<slot />

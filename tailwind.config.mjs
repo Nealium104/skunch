@@ -9,6 +9,7 @@ export default {
     extend: {
       colors: {
         "off-white": "#CCCCCC",
+        red: "#C90202",
       },
     },
   },
