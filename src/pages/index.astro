@@ -60,15 +60,4 @@ CMS.init()
 		</div>
 		<Image class="h-full object-cover" src={dramatic} alt="Skunch band shot" />
 	</div>
-	<script>
-		if (window.netlifyIdentity) {
-		  window.netlifyIdentity.on("init", user => {
-			if (!user) {
-			  window.netlifyIdentity.on("login", () => {
-				document.location.href = "/admin/";
-			  });
-			}
-		  });
-		}
-	  </script>
 </Layout>
