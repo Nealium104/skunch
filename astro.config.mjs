@@ -13,6 +13,7 @@ export default defineConfig({
           repo: "Nealium104/skunch",
           branch: "main",
         },
+        media_folder: "images/uploads",
         // media_library: {
         //   name: "cloudinary",
         //   config: {
