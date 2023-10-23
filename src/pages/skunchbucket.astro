@@ -1,4 +1,5 @@
 ---
+import Layout from '../layouts/Layout.astro'
 import { createClient } from 'contentful'
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
@@ -9,18 +10,23 @@ const client = createClient({
 
 client.getEntries()
     .then ((response) => {
+        posts = response.items;
         console.log(response.items)
     })
     .catch(console.error)
+
+export { posts }
 ---
+<Layout>
 <button id="fetchButton">Click</button>
 
 <body>
     {posts.map(post => (
         <article>
             <h1>This is a test</h1>
-            <h2>{posts.fields.title}</h2>
-            <p>{posts.fields.date}</p>
+            <h2>{post.fields.title}</h2>
+            <p>{post.fields.date}</p>
         </article>
     ))}
 </body>
+</Layout>
