@@ -1,21 +1,22 @@
 ---
+// Import the necessary sorceries
+import fetch from 'node-fetch';
 import Layout from '../layouts/Layout.astro'
-import { createClient } from 'contentful'
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
 
-const client = createClient({
-    space: process.env.CONTENTFUL_SPACE_API_KEY,
-    accessToken: CONTENTFUL_DELIVERY_API,
-})
+// Define an asynchronous function to fetch the data
+let posts;
+const fetchData = async () => {
+  const response = await fetch('/.netlify/functions/contentful-fetch');
+  if (!response.ok) {
+    throw new Error('Network response was not ok ' + response.statusText);
+  }
+  const data = await response.json();
+  posts = data;
+};
 
-client.getEntries()
-    .then ((response) => {
-        posts = response.items;
-        console.log(response.items)
-    })
-    .catch(console.error)
-
-export { posts }
+// Call the function to ensure the data is fetched
+fetchData();
+export { posts };
 ---
 <Layout>
 <button id="fetchButton">Click</button>
