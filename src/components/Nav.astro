@@ -3,17 +3,6 @@ import { Image } from "astro:assets";
 import Icon from "astro-icon";
 import logoWord from '../../public/images/logoWord.png'
 ---
-<!-- <nav class="h-20 flex justify-between">
-    <div class="w-32">
-        <Image src={logoWord} alt="Skunch logo" class="w-full" />
-    </div>
-    <ul class="flex gap-8 items-center justify-self-end">
-        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 hover:text-red px-4"><a href="/">About</a></li>
-        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 hover:text-red px-4"><a href="/">SkunchBucket</a></li>
-        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 hover:text-red px-4"><a href="/">Merch</a></li>
-        <li class="transition duration-150 hover:scale-125 hover:-translate-y-2 hover:text-red px-4"><a href="/">Contact</a></li>
-    </ul>
-</nav> -->
 
 <div class="flex flex-col items-center">
     <nav class="fixed md:relative h-20 px-4 w-full mx-8 bg-off-white z-20">
@@ -84,6 +73,9 @@ import logoWord from '../../public/images/logoWord.png'
             });
     
             document.addEventListener('astro:after-swap', () => { 
+                const button = document.getElementById('hamburger-button');
+                const nav = document.getElementById('mobile-nav');
+
                 button.addEventListener('click', function() {
                     nav.classList.toggle('hidden')
                 });
