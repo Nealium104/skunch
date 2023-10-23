@@ -9,7 +9,7 @@ export default defineConfig({
     NetlifyCMS({
       config: {
         backend: {
-          name: "git gateway",
+          name: "git-gateway",
           repo: "Nealium104/skunch",
           branch: "main",
         },
