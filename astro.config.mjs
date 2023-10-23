@@ -16,7 +16,7 @@ export default defineConfig({
           name: "cloudinary",
           config: {
             cloud_name: "dwbwyzsyp", // Replace with your Cloudinary cloud name
-            api_key: 718734367618239,
+            api_key: "718734367618239",
             use_secure_url: true,
           },
         },
