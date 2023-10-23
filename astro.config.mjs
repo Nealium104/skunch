@@ -5,8 +5,8 @@ import NetlifyCMS from "astro-netlify-cms";
 // https://astro.build/config
 export default defineConfig({
   image: {
-    domains: ['res.cloudinary.com', 'skunch.netlify.app']
-  }
+    domains: ["res.cloudinary.com", "skunch.netlify.app"],
+  },
   integrations: [
     tailwind(),
     NetlifyCMS({
