@@ -10,7 +10,7 @@ export default defineConfig({
       config: {
         backend: {
           name: "github",
-          repo: "Nealium104/skunch"
+          repo: "Nealium104/skunch",
           branch: "main",
         },
         // media_library: {
