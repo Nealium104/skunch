@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro'
 import '@fontsource/bangers'
 import '@fontsource-variable/roboto-slab'
 import { ViewTransitions } from 'astro:transitions'
+import Scripts from '../components/Scripts.astro'
 ---
 
 <html lang="en">
@@ -20,6 +21,7 @@ import { ViewTransitions } from 'astro:transitions'
         <Nav />
 		<div class="pt-12 md:pt-0">
 			<slot />
+			<Scripts/>
 		</div>
         <Footer />
 	</body>
