@@ -7,7 +7,7 @@ const client = contentful.createClient({
 
 exports.handler = async () => {
   try {
-    const entries = await client.getEntries();
+    const entries = await client.getEntry();
     return {
       statusCode: 200,
       body: JSON.stringify(entries.items),
