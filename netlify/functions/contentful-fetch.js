@@ -18,4 +18,5 @@ exports.handler = async () => {
       body: JSON.stringify(error),
     };
   }
+  console.log(entries);
 };
