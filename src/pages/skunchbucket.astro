@@ -28,7 +28,7 @@ const entries = await contentfulClient.getEntries<ConcertDate>({
             <h1>This is a test</h1>
             <h2>{item.fields.Venue}</h2>
             <p>{item.fields.Date}</p>
-            <img src={item.fields.Images} alt="image"/>
+            <img src={item.fields.file.url} alt="image"/>
         </article>
     ))}
 </body>

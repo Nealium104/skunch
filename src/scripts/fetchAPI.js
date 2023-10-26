@@ -1,5 +1,5 @@
 export async function fetchAPI() {
-  const url = "/.netlify/functions/getContent";
+  const url = "/.netlify/functions/contentful-fetch.js";
   try {
     const response = await fetch(url);
     if (!response.ok) {
