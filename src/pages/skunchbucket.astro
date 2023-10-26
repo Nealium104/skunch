@@ -1,32 +1,31 @@
 ---
-// Import the necessary sorceries
-import fetch from 'node-fetch';
-import Layout from '../layouts/Layout.astro'
+import Layout from "../layouts/Layout.astro";
+import { contentfulClient } from "../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import type { EntryFieldTypes } from "contentful";
 
-// Define an asynchronous function to fetch the data
-let posts;
-const fetchData = async () => {
-  const response = await fetch('/.netlify/functions/contentful-fetch');
-  if (!response.ok) {
-    throw new Error('Network response was not ok ' + response.statusText);
+interface ConcertDate {
+  contentTypeId: "concertDate",
+  fields: {
+    Venue: EntryFieldTypes.Text
+    Images: EntryFieldTypes.RichText,
+    Date: EntryFieldTypes.Date,
   }
-  const data = await response.json();
-  posts = data;
-};
+}
 
-// Call the function to ensure the data is fetched
-fetchData();
-export { posts };
+const entries = await contentfulClient.getEntries<ConcertDate>({
+  content_type: "concertDate",
+});
 ---
 <Layout>
 <button id="fetchButton">Click</button>
 
 <body>
-    {posts.map(post => (
+    {entries.items.map(item => (
         <article>
             <h1>This is a test</h1>
-            <h2>{post.fields.title}</h2>
-            <p>{post.fields.date}</p>
+            <h2>{item.fields.Venue}</h2>
+            <p>{item.fields.Date}</p>
         </article>
     ))}
 </body>
