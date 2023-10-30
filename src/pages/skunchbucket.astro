@@ -1,21 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { contentfulClient } from "../lib/contentful";
+import { client } from "../../netlify/functions/contentful";
 import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 import type { EntryFieldTypes } from "contentful";
 
-interface ConcertDate {
-  contentTypeId: "concertDate",
-  fields: {
-    Venue: EntryFieldTypes.Text
-    Images: EntryFieldTypes.AssetLink,
-    Date: EntryFieldTypes.Date,
-  }
-}
+// interface ConcertDate {
+//   contentTypeId: "concertDate",
+//   fields: {
+//     Venue: EntryFieldTypes.Text
+//     Images: EntryFieldTypes.AssetLink,
+//     Date: EntryFieldTypes.Date,
+//   }
+// }
 
-const entries = await contentfulClient.getEntries<ConcertDate>({
-  content_type: "concertDate",
-});
+client.getEntry('<concertDate>').then(function (entry) {
+  console.log(entry.sys)
+
+  console.log(entry.fields.title)
+})
 
 ---
 <Layout>
@@ -23,13 +25,14 @@ const entries = await contentfulClient.getEntries<ConcertDate>({
 
 <body>
   <h1>This is the skunchbucket</h1>
-    {entries.items.map(item => (
+    <!-- {entries.items.map(item => (
         <article>
             <h1>This is a test</h1>
             <h2>{item.fields.Venue}</h2>
             <p>{item.fields.Date}</p>
             <img src={item.fields.file.url} alt="image"/>
         </article>
-    ))}
+    ))} -->
 </body>
-</Layout>
+<script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+</Layout>../../netlify/functions/contentful
