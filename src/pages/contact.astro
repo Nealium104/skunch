@@ -1,0 +1,22 @@
+<button id="sendEmailButton">Send Email</button>
+
+<script>
+  const button = document.getElementById('sendEmailButton');
+  button.addEventListener('click', async () => {
+    try {
+      const response = await fetch('/.netlify/functions/sendEmail', {
+        method: 'POST',
+      });
+      const result = await response.json();
+      console.log(result);
+      if (response.status === 200) {
+        alert('Email sent successfully');
+      } else {
+        alert('Failed to send email');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error sending email');
+    }
+  });
+</script>

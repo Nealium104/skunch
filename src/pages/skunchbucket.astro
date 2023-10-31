@@ -14,9 +14,9 @@ import type { EntryFieldTypes } from "contentful";
 // }
 
 client.getEntry('<concertDate>').then(function (entry) {
-  console.log(entry.sys)
+  console.log(entry)
 
-  console.log(entry.fields.title)
+  console.log(entry.fields.venue)
 })
 
 ---
