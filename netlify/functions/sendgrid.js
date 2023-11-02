@@ -3,7 +3,7 @@
 
 const sgMail = require("@sendgrid/mail");
 
-exports.handler = async (event, context) => {
+exports.handler = async (request, context) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
     to: "neal.powers@outlook.com", // Change to your recipient
