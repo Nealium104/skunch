@@ -2,8 +2,8 @@
 import Layout from "../layouts/Layout.astro"
 ---
 <Layout>
-  <h1>Here's the contact form:</h1>
-  <form class="flex flex-col w-full gap-4 p-8 mx-auto border-2 md:w-1/3 border-red" name="contact" action="submit" method="POST" data-netlify="true">
+  <h1>Here's the contact form:</h1>  
+  <form class="flex flex-col w-full gap-4 p-8 mx-auto border-2 md:w-1/3 border-red" name="contact" action="submit" method="POST" netlify>
     <h1 class="text-4xl font-bangers">Contact Skunch</h1>
     <div class="flex flex-col">
       <span>Name:</span>
@@ -29,6 +29,6 @@ import Layout from "../layouts/Layout.astro"
         <textarea class="w-full px-4" name="message" id="message" cols="30" rows="4"></textarea>
       </label>
     </div>
-    <button class="" type="submit">submit</button>
+    <button type="submit">submit</button>
   </form>
 </Layout>
