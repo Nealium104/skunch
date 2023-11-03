@@ -1,9 +1,8 @@
 // using Twilio SendGrid's v3 Node.js Library
 // https://github.com/sendgrid/sendgrid-nodejs
 
-const sgMail = require("@sendgrid/mail");
-
 exports.handler = async (request, context) => {
+  const sgMail = require("@sendgrid/mail");
   sgMail.setApiKey(Netlify.env.get("SENDGRID_API_KEY"));
   const msg = {
     to: "neal.powers@outlook.com", // Change to your recipient
@@ -12,6 +11,7 @@ exports.handler = async (request, context) => {
     text: "and easy to do anywhere, even with Node.js",
     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
   };
+
   sgMail
     .send(msg)
     .then(() => {
