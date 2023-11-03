@@ -4,7 +4,7 @@
 const sgMail = require("@sendgrid/mail");
 
 exports.handler = async (request, context) => {
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  sgMail.setApiKey(Netlify.env.get("SENDGRID_API_KEY"));
   const msg = {
     to: "neal.powers@outlook.com", // Change to your recipient
     from: "neal.grindstaff@gmail.com", // Change to your verified sender
