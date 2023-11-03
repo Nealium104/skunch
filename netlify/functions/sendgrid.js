@@ -4,7 +4,7 @@ exports.handler = async (request, context) => {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
   const msg = {
-    to: "nealpowers@neal-powers.com",
+    to: "neal.grindstaff2@gmail.com",
     from: "neal.grindstaff@gmail.com",
     subject: "Sending with SendGrid is Fun",
     text: "and easy to do anywhere, even with Node.js",
