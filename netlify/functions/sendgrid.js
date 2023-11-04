@@ -14,7 +14,7 @@ exports.handler = async (event, context) => {
     from: "neal.grindstaff@gmail.com",
     subject: subject,
     text: message,
-    html: `<strong>${message}</strong>`,
+    html: `From:${name} at ${email} <strong>${message}</strong>`,
   };
 
   try {
