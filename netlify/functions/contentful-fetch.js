@@ -1,13 +1,8 @@
-const contentful = require("contentful");
-
-const client = contentful.createClient({
-  space: process.env.CONTENTFUL_SPACE_API_KEY,
-  accessToken: process.env.CONTENTFUL_DELIVERY_API,
-});
+import { client } from "./contentful";
 
 exports.handler = async () => {
   try {
-    const entries = await client.getEntry();
+    const entries = await client.getEntries();
     return {
       statusCode: 200,
       body: JSON.stringify(entries.items),

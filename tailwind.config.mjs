@@ -5,6 +5,7 @@ export default {
     fontFamily: {
       bangers: ["Bangers", "sans-serif"],
       "roboto-slab": ["Roboto Slab Variable", "sans"],
+      pixels: ["Pixelify Sans Variable", "sans"],
     },
     extend: {
       colors: {
