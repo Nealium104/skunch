@@ -32,19 +32,3 @@ import Layout from "../layouts/Layout.astro"
     <button class="bg-red rounded-xl py-2 px-4 w-32 mx-auto" type="submit">submit</button>
   </form>
 </Layout>
-
-// <script>
-//   document.addEventListener('DOMContentLoaded', () => {
-//     let contactForm = document.getElementById("contact");
-//     contactForm.addEventListener("submit", async (e) => {
-//       e.preventDefault();
-//       let response = await fetch('/.netlify/functions/sendgrid', {
-//         method: 'POST',
-//         body: new FormData(contactForm),
-//       });
-//       let result = await response.json();
-//       console.log(result);
-//       // Handle the response, e.g., show a success or error message.
-//     });
-//   });
-// </script>
