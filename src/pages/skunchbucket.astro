@@ -80,6 +80,7 @@ const contentfulData = await fetchData();
       modalContent.appendChild(clone);
     });
     imageModal.showModal();
+    imageModal.scrollTop = 0;
   }
 
   const closeModel = () => {
