@@ -18,35 +18,85 @@ const contentfulData = await fetchData();
 ---
 <Layout>
     <div class="font-pixels mt-10 md:mt-0 max-w-screen-xl mx-auto">
-        <body class="">
+        <div class="">
           <h1 class="font-pixels text-4xl font-bold">This is the skunchbucket</h1>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {contentfulData.map(item => (
-            <article class="border-2 border-red p-4 gap-8">
+            {contentfulData.map((item, index) => (
+                <article class="border-2 border-red p-4 gap-8 flex flex-col items-start justify-between">
                 <div class="pb-4">
                     <h2 class="text-3xl">{item.fields.venue}</h2>
                     <p>{item.fields.date}</p>
                     <span>{item.fields.notes}</span>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {item.fields.images && item.fields.images.map(image => (
-                        <div class="">
+                <div id={`image-container-${index}`} class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {item.fields.images && item.fields.images.map((image, idx) => (
+                        <div class={idx > 1 ? 'hidden' : 'inline'}>
                             <Image 
                                 src={`https:${image.fields.file.url}`}
                                 alt={image.fields.title}
                                 width={image.fields.file.details.image.width}
                                 height={image.fields.file.details.image.height}
-                            />
-                        </div>
-                    ))}
-                    </div>
+                                />
+                                </div>
+                                ))}
+                </div>
+                    <button class="more-button border-2 px-2 border-black hover:bg-red hover:text-off-white hover:border-red transition duration-120">More</button>
             </article>
         ))}
           </div>
-            
-        </body>
-    </div>
+          <dialog id="imageModal" class="modal w-screen bg-off-white md:w-2/3 p-8 items-start gap-8 border-2 border-red">
+            <div class="modal-content flex flex-col gap-8" id="modal-content"></div>
+            <button class="border-2 my-4 px-2 border-black hover:bg-red hover:text-off-white hover:border-red transition duration-120" id="close-modal">Close</button>
+          </dialog>
+        </div>
+      </div>
 </Layout>
 <script>
+  document.addEventListener('astro:page-load', () => {
+  const buttons = document.querySelectorAll('.more-button');
+  const closeModalButton = document.getElementById('close-modal');
 
+    setListeners(buttons, closeModalButton);
+  });
+
+  const setListeners = (buttons, closeModalButton) => {
+    closeModalButton.removeEventListener('click', closeModel);
+    closeModalButton.addEventListener('click', closeModel);
+
+    buttons.forEach((button, index) => {
+      button.removeEventListener('click', toggleImages);
+      button.addEventListener('click', () => toggleImages(index));  
+    }) 
+  }
+
+  function toggleImages(index) {
+    const images = document.querySelectorAll(`#image-container-${index} img`);
+    const modalContent = document.getElementById('modal-content');
+    const imageModal = document.getElementById('imageModal') as HTMLDialogElement;
+
+    modalContent.innerHTML = ''
+    images.forEach((img) => {
+      const clone = img.cloneNode();
+      modalContent.appendChild(clone);
+    });
+    imageModal.showModal();
+  }
+
+  const closeModel = () => {
+    const modalContent = document.getElementById('modal-content');
+    const imageModal = document.getElementById('imageModal') as HTMLDialogElement;
+
+    modalContent.innerHTML = '';
+    imageModal.close();
+  };
+
+  window.addEventListener('click', (event) => {
+    const modalContent = document.getElementById('modal-content');
+    const imageModal = document.getElementById('imageModal') as HTMLDialogElement;
+
+    if (event.target === imageModal) {
+      modalContent.innerHTML = '';
+      imageModal.close();
+    }
+  });
 </script>
