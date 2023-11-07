@@ -29,17 +29,25 @@ const contentfulData = await fetchData();
                     <span>{item.fields.notes}</span>
                 </div>
                 <div id={`image-container-${index}`} class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {item.fields.images && item.fields.images.map((image, idx) => (
-                        <div class={idx > 1 ? 'hidden' : 'inline'}>
-                            <Image 
-                                src={`https:${image.fields.file.url}`}
-                                alt={image.fields.title}
-                                width={image.fields.file.details.image.width}
-                                height={image.fields.file.details.image.height}
-                                />
-                                </div>
-                                ))}
-                </div>
+                {item.fields.images.slice(0, 2).map((image) => (
+                  <Image 
+                    src={`https:${image.fields.file.url}`}
+                    alt={image.fields.title}
+                    width={image.fields.file.details.image.width}
+                    height={image.fields.file.details.image.height}
+                  />
+                ))}
+                <div id={`image-modal-content-${index}`} class="hidden">
+                {item.fields.images.map((image, idx) => (
+                  <Image
+                    src={`https:${image.fields.file.url}`}
+                    alt={image.fields.title}
+                    width={image.fields.file.details.image.width}
+                    height={image.fields.file.details.image.height}
+                  />
+                ))}
+              </div>
+              </div>
                     <button class="more-button text-2xl border-2 px-2 border-black hover:bg-red hover:text-off-white hover:border-red transition duration-120">More</button>
             </article>
         ))}
@@ -60,8 +68,8 @@ const contentfulData = await fetchData();
   });
 
   const setListeners = (buttons, closeModalButton) => {
-    closeModalButton.removeEventListener('click', closeModel);
-    closeModalButton.addEventListener('click', closeModel);
+    closeModalButton.removeEventListener('click', closeModal);
+    closeModalButton.addEventListener('click', closeModal);
 
     buttons.forEach((button, index) => {
       button.removeEventListener('click', toggleImages);
@@ -70,20 +78,16 @@ const contentfulData = await fetchData();
   }
 
   function toggleImages(index) {
-    const images = document.querySelectorAll(`#image-container-${index} img`);
-    const modalContent = document.getElementById('modal-content');
-    const imageModal = document.getElementById('imageModal') as HTMLDialogElement;
+  const allImagesContent = document.getElementById(`image-modal-content-${index}`).innerHTML;
+  const modalContent = document.getElementById('modal-content');
+  const imageModal = document.getElementById('imageModal') as HTMLDialogElement;
 
-    modalContent.innerHTML = ''
-    images.forEach((img) => {
-      const clone = img.cloneNode();
-      modalContent.appendChild(clone);
-    });
-    imageModal.showModal();
-    imageModal.scrollTop = 0;
-  }
+  modalContent.innerHTML = allImagesContent;
+  imageModal.showModal();
+  imageModal.scrollTop = 0; // Ensures the modal starts at the top
+}
 
-  const closeModel = () => {
+  const closeModal = () => {
     const modalContent = document.getElementById('modal-content');
     const imageModal = document.getElementById('imageModal') as HTMLDialogElement;
 
