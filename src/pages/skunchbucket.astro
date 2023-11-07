@@ -25,7 +25,7 @@ const contentfulData = await fetchData();
                 <article class="border-2 border-red p-4 gap-8 flex flex-col items-start justify-between">
                 <div class="pb-4">
                     <h2 class="text-3xl">{item.fields.venue}</h2>
-                    <p>{item.fields.date}</p>
+                    <p class="text-sm">{item.fields.date}</p>
                     <span>{item.fields.notes}</span>
                 </div>
                 <div id={`image-container-${index}`} class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -40,13 +40,13 @@ const contentfulData = await fetchData();
                                 </div>
                                 ))}
                 </div>
-                    <button class="more-button border-2 px-2 border-black hover:bg-red hover:text-off-white hover:border-red transition duration-120">More</button>
+                    <button class="more-button text-2xl border-2 px-2 border-black hover:bg-red hover:text-off-white hover:border-red transition duration-120">More</button>
             </article>
         ))}
           </div>
-          <dialog id="imageModal" class="modal w-screen bg-off-white md:w-2/3 p-8 items-start gap-8 border-2 border-red">
+          <dialog id="imageModal" class="modal backdrop:bg-black/50 w-screen bg-off-white md:w-2/3 p-8 items-start gap-8 border-2 border-red">
             <div class="modal-content flex flex-col gap-8" id="modal-content"></div>
-            <button class="border-2 my-4 px-2 border-black hover:bg-red hover:text-off-white hover:border-red transition duration-120" id="close-modal">Close</button>
+            <button class="border-2 my-4 px-2 border-black hover:bg-red text-2xl hover:text-off-white hover:border-red transition duration-120" id="close-modal">Close</button>
           </dialog>
         </div>
       </div>
