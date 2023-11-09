@@ -6,6 +6,20 @@ import { Image } from 'astro:assets';
 import Icon from 'astro-icon';
 import railSurfing from '../../public/images/railSurfing.jpg'
 import dramatic from '../../public/images/dramatic.jpg'
+
+const fetchData = async () => {
+  try {
+      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch?content_type=gigDate`);
+      const data = await response.json();
+      return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
+};
+
+const contentfulData = await fetchData();
+console.log(contentfulData)
 ---
 <Layout>
 	<div class="grid grid-cols-1 md:grid-cols-3">
@@ -18,12 +32,13 @@ import dramatic from '../../public/images/dramatic.jpg'
 					<div class="text-left font-bold">Venue</div>
 					<div class="text-left font-bold">Date</div>
 					<div class="text-left font-bold">Note</div>
-					{tourData.map(concert => (
+					{contentfulData.map((concert, index) => (
 						<Concert
-						venue={concert.venue}
-						feat={concert.note}
-						url={concert.url}
-						date={concert.date}
+							index={index}
+							venue={concert.fields.venue}
+							notes={concert.fields.notes}
+							url={concert.fields.url}
+							date={concert.fields.date}
 						/>
 				))}
 				</div>
@@ -58,3 +73,6 @@ import dramatic from '../../public/images/dramatic.jpg'
 		<Image class="h-full object-cover" src={dramatic} alt="Skunch band shot" />
 	</div>
 </Layout>
+<script>
+	
+</script>
