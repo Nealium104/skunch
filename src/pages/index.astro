@@ -7,10 +7,10 @@ import Icon from 'astro-icon';
 import railSurfing from '../../public/images/railSurfing.jpg'
 import dramatic from '../../public/images/dramatic.jpg'
 
-const fetchData = async (event) => {
+const fetchData = async () => {
   try {
-      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch${event}`);
-      const data = await response.json();
+      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch?content_type=gigDate`);
+       const data = await response.json();
       return data;
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -18,7 +18,8 @@ const fetchData = async (event) => {
   }
 };
 
-const contentfulData = await fetchData('?content_type=gigDate');
+const contentfulData = await fetchData();
+console.log(contentfulData)
 ---
 <Layout>
 	<div class="grid grid-cols-1 md:grid-cols-3">

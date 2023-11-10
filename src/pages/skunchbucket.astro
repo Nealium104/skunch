@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/pixelify-sans"
 import { Image } from "astro:assets";
 
-const fetchData = async (event) => {
+const fetchData = async () => {
   try {
-      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch${event}`);
+      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch?content_type=concertDate`);
       const data = await response.json();
       return data;
   } catch (error) {
@@ -14,7 +14,7 @@ const fetchData = async (event) => {
   }
 };
 
-const contentfulData = await fetchData('?content_type=concertDate');
+const contentfulData = await fetchData();
 
 contentfulData.forEach((item, index) => {
   console.log(`${index}:`, item.fields.images)
