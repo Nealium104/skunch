@@ -3,9 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/pixelify-sans"
 import { Image } from "astro:assets";
 
-const fetchData = async () => {
+const fetchData = async (event) => {
   try {
-      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch`);
+      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch${event}`);
       const data = await response.json();
       return data;
   } catch (error) {
@@ -14,7 +14,7 @@ const fetchData = async () => {
   }
 };
 
-const contentfulData = await fetchData();
+const contentfulData = await fetchData('?content_type=concertDate');
 ---
 <Layout>
     <div class="font-pixels mt-10 md:mt-0 max-w-screen-xl mx-auto">
