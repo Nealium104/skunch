@@ -15,6 +15,10 @@ const fetchData = async (event) => {
 };
 
 const contentfulData = await fetchData('?content_type=concertDate');
+
+contentfulData.forEach((item, index) => {
+  console.log(`${index}:`, item.fields.images)
+})
 ---
 <Layout>
     <div class="font-pixels mt-10 md:mt-0 max-w-screen-xl mx-auto">
@@ -29,14 +33,18 @@ const contentfulData = await fetchData('?content_type=concertDate');
                     <span>{item.fields.notes}</span>
                 </div>
                 <div id={`image-container-${index}`} class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {item.fields.images.slice(0, 2).map((image) => (
+                  {item.fields.images && Array.isArray(item.fields.images) && item.fields.images.length > 0 ? (
+                    item.fields.images.slice(0, 2).map((image) => (
                   <Image 
                     src={`https:${image.fields.file.url}`}
                     alt={image.fields.title}
                     width={image.fields.file.details.image.width}
                     height={image.fields.file.details.image.height}
                   />
-                ))}
+                ))
+                ): (
+                  <span>Sorry, no images!</span>
+                )}
                 <div id={`image-modal-content-${index}`} class="hidden">
                 {item.fields.images.map((image, idx) => (
                   <Image
