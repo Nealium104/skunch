@@ -7,7 +7,7 @@ import { ViewTransitions } from 'astro:transitions'
 import { slide } from 'astro:transitions'
 ---
 
-<html lang="en">
+<html class="global" lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -17,9 +17,22 @@ import { slide } from 'astro:transitions'
 	</head>
 	<body class="font-roboto-slab bg-off-white min-h-screen px-4">
         <Nav transition:persist />
-		<div transition:animate={slide({duration: '1s'})}class="pt-12 md:pt-0">
+		<div transition:animate={slide({duration: '1s'})} class="pt-12 md:pt-0">
 			<slot />
 		</div>
         <Footer />
 	</body>
 </html>
+<style>
+	.global {
+  cursor: url("/cursor.png"), auto;
+  cursor: pointer, none;
+}
+
+a:hover, button:hover, input[type="submit"]:hover, select:hover, etc {
+  cursor: url('/path-to-your/custom-pointer-cursor.png'), pointer;
+}*, *:hover {
+	cursor: url("/cursor.png"), none !important;
+}
+
+</style>
