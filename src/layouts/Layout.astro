@@ -17,7 +17,7 @@ import { slide } from 'astro:transitions'
 	</head>
 	<body class="font-roboto-slab bg-off-white min-h-screen px-4">
         <Nav transition:persist />
-		<div transition:animate={slide({duration: '1s'})} class="pt-12 md:pt-0">
+		<div transition:animate={slide({duration: '1s'})} class="pt-12 md:pt-0 max-w-screen-xl mx-auto ">
 			<slot />
 		</div>
         <Footer />
