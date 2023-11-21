@@ -1,7 +1,22 @@
 ---
-import Albums from "../data/BandData";
-import Bio from "../components/Bio.astro"
 import Layout from "../layouts/Layout.astro";
+import Album from "../components/Album.astro";
+import { Image } from "astro:assets";
+
+const fetchData = async () => {
+  try {
+      const response = await fetch(`${process.env.BASE_URL}/contentful-fetch?content_type=album`);
+      const data = await response.json();
+      return data;
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
+};
+
+const contentfulData = await fetchData();
+
+console.log(contentfulData[0].fields.cover.fields.file.details)
 ---
 <Layout>
     <div class="max-w-screen-xl mx-auto">
@@ -12,14 +27,19 @@ import Layout from "../layouts/Layout.astro";
         </div>
         <h2 class="text-2xl">The Members</h2>
         <section class="w-full flex flex-col gap-8">        
-        {Albums.map(member => (
-            <Bio
-                name={member.name}
-                short={member.short}
-                long={member.long}
-                img={member.img}
-                width={member.width}
-                height={member.height}
+        {contentfulData.map((album: any) => (
+            <Album
+                name={album.fields.title}
+                date={album.fields.date.toLocaleString('en-US', {
+                    year: "numeric",
+                    month: "numeric",
+                    day: "numeric"
+                })}
+                img={`https:${album.fields.cover.fields.file.url}`}
+                tracklist={album.fields.trackList}
+                height={album.fields.cover.fields.file.details.image.height}
+                width={album.fields.cover.fields.file.details.image.width}
+
             />
         ))}
         </section>
