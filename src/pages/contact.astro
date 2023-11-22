@@ -8,28 +8,28 @@ import Layout from "../layouts/Layout.astro"
       <div class="flex flex-col">
         <span>Name:</span>
         <label for="name">
-          <input class="w-full px-4" name="name" id="name" type="text">
+          <input class="w-full px-2" name="name" id="name" type="text">
         </label>
       </div>
       <div class="flex flex-col">
         <span>Email:</span>
         <label for="email">
-          <input class="w-full px-4" name="email" id="email" type="email">
+          <input class="w-full px-2" name="email" id="email" type="email">
         </label>
       </div>
       <div class="flex flex-col">
         <span>Subject:</span>
         <label for="subject">
-          <input class="w-full px-4" name="subject" id="subject" type="text">
+          <input class="w-full px-2" name="subject" id="subject" type="text">
         </label>
       </div>
       <div class="flex flex-col">
         <span>Message</span>
         <label for="message">
-          <textarea class="w-full px-4" name="message" id="message" cols="30" rows="4"></textarea>
+          <textarea class="w-full px-2" name="message" id="message" cols="30" rows="4"></textarea>
         </label>
       </div>
-      <div data-netlify-recaptcha="true"></div>
+      <div class="mx-auto" data-netlify-recaptcha="true"></div>
       <button class="border-4 border-red rounded-full font-extrabold py-2 px-4 w-32 mx-auto uppercase transition duration-150 hover:bg-red hover:text-white" type="submit">submit</button>
     </form>
   </div>
