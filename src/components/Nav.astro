@@ -3,69 +3,67 @@ import { Image } from "astro:assets";
 import Icon from "astro-icon";
 import logoWord from '../../public/images/logoWord.png'
 ---
-<div class="flex flex-col items-center max-w-screen-xl mx-auto">
-    <nav class="fixed md:relative h-20 px-4 w-full mx-8 bg-off-white z-20">
-        <div>
-            <div class="flex flex-col md:flex-row justify-between items-center w-full">
-                <div class="flex items-center w-full">
-                    <button class="block md:hidden px-4" id="hamburger-button"><Icon class="w-8" pack="mdi" name="menu"/></button>
-                    <a href="/" class="flex w-32"><Image src={logoWord} alt="Skunch logo" class="w-full" /></a>
-                </div>
-        <!-- Desktop -->
-                <ul class="hidden md:flex">
-                    <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
-                        <a href="/releases">Releases</a>
-                    </li>
-                    <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
-                        <a href="/skunchbucket">SkunchBucket</a>
-                    </li>
-                    <!-- <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
-                        <a href="/merch">Merch</a>
-                    </li> -->
-                    <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
-                        <a href="/contact">Contact</a>
-                    </li>
-                </ul>
-        </div>
-    <!-- Mobile -->
-            <div class="w-full flex flex-col items-center text-white z-20">
-                <ul class="absolute hidden flex flex-col justify-evenly items-center bg-red/50 w-full h-screen" id="mobile-nav">
-                    <li class="flex flex-col items-center">
-                        <a class="px-4 transition duration-150 hover:text-primary hover:scale-125 flex flex-col items-center" href="/releases">
-                            <Icon class="text-white w-8" pack="ion" name="compass-sharp"/>
-                            <div>Releases</div>
-                        </a>
-                    </li>
-                    <li class="flex flex-col items-center">
-                        <a class="px-4 transition duration-150 hover:text-primary hover:scale-125 flex flex-col items-center" href="/skunchbucket">
-                            <Icon class="text-white w-8" pack="ion" name="camera-outline"/>
-                            <div>SkunchBucket</div>
-                        </a>
-                    </li>
-                    <!-- <li class="flex flex-col items-center">
-                        <a class="px-4 transition duration-150 hover:scale-125 flex flex-col items-center" href="/merch">
-                            <Icon class="text-white w-8" pack="ion" name="bag" />
-                            <div>Merch</div>
-                        </a>
-                    </li> -->
-                    <li class="flex flex-col items-center">
-                        <a class="px-4 transition duration-150 hover:scale-125 flex flex-col items-center" href="/contact">
-                            <Icon class="text-white w-8" pack="ion" name="mail" />
-                            <div>Contact</div>
-                        </a>
-                    </li>
-                </ul>
+<nav class="fixed md:relative h-20 pr-4 w-full bg-off-white z-20 flex flex-col items-evenly max-w-screen-xl mx-auto">
+    <div>
+        <div class="flex flex-col md:flex-row justify-between items-center w-full">
+            <div class="flex items-center w-full">
+                <button class="block md:hidden px-4" id="hamburger-button"><Icon class="w-8" pack="mdi" name="menu"/></button>
+                <a href="/" class="flex w-32"><Image src={logoWord} alt="Skunch logo" class="w-full" /></a>
             </div>
+    <!-- Desktop -->
+            <ul class="hidden md:flex">
+                <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
+                    <a href="/releases">Releases</a>
+                </li>
+                <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
+                    <a href="/skunchbucket">SkunchBucket</a>
+                </li>
+                <!-- <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
+                    <a href="/merch">Merch</a>
+                </li> -->
+                <li class="px-4 transition duration-150 hover:-translate-y-2 hover:scale-125 hover:text-red">
+                    <a href="/contact">Contact</a>
+                </li>
+            </ul>
+    </div>
+<!-- Mobile -->
+        <div class="w-full h-20 flex flex-col items-center text-white z-20">
+            <ul class="absolute hidden flex flex-col justify-evenly items-center bg-red/50 w-full h-screen" id="mobile-nav">
+                <li class="flex flex-col items-center">
+                    <a class="px-4 transition duration-150 hover:text-primary hover:scale-125 flex flex-col items-center" href="/releases">
+                        <Icon class="text-white w-8" pack="ion" name="compass-sharp"/>
+                        <div>Releases</div>
+                    </a>
+                </li>
+                <li class="flex flex-col items-center">
+                    <a class="px-4 transition duration-150 hover:text-primary hover:scale-125 flex flex-col items-center" href="/skunchbucket">
+                        <Icon class="text-white w-8" pack="ion" name="camera-outline"/>
+                        <div>SkunchBucket</div>
+                    </a>
+                </li>
+                <!-- <li class="flex flex-col items-center">
+                    <a class="px-4 transition duration-150 hover:scale-125 flex flex-col items-center" href="/merch">
+                        <Icon class="text-white w-8" pack="ion" name="bag" />
+                        <div>Merch</div>
+                    </a>
+                </li> -->
+                <li class="flex flex-col items-center">
+                    <a class="px-4 transition duration-150 hover:scale-125 flex flex-col items-center" href="/contact">
+                        <Icon class="text-white w-8" pack="ion" name="mail" />
+                        <div>Contact</div>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <script>
-            document.addEventListener('astro:page-load', () => {
-                const button = document.getElementById('hamburger-button');
-                const nav = document.getElementById('mobile-nav');
+    </div>
+    <script>
+        document.addEventListener('astro:page-load', () => {
+            const button = document.getElementById('hamburger-button');
+            const nav = document.getElementById('mobile-nav');
 
-                button.addEventListener('click', () => {
-                    nav.classList.toggle('hidden')
-                });
-            });    
-        </script>
-    </nav>
-</div>
+            button.addEventListener('click', () => {
+                nav.classList.toggle('hidden')
+            });
+        });    
+    </script>
+</nav>
