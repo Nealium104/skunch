@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Album from "../components/Album.astro";
-import { Image } from "astro:assets";
 
 const fetchData = async () => {
   try {
@@ -16,20 +15,19 @@ const fetchData = async () => {
 
 const contentfulData = await fetchData();
 
-console.log(contentfulData[0].fields.cover.fields.file.details)
+console.log(contentfulData[0].fields.url)
 ---
 <Layout>
     <div class="max-w-screen-xl mx-auto">
-        <div class="flex flex-col py-8">
-            <h1 class="text-3xl">About the band</h1>
+        <div class="flex flex-col py-8 gap-4">
+            <h1 class="text-3xl font-extrabold">Releases</h1>
             <span class="italic">We're music for booty shakin' people</span>
             <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"</p>
         </div>
-        <h2 class="text-2xl">The Members</h2>
         <section class="w-full flex flex-col gap-8">        
         {contentfulData.map((album: any) => (
             <Album
-                name={album.fields.title}
+                title={album.fields.title}
                 date={album.fields.date.toLocaleString('en-US', {
                     year: "numeric",
                     month: "numeric",
@@ -39,7 +37,7 @@ console.log(contentfulData[0].fields.cover.fields.file.details)
                 tracklist={album.fields.trackList}
                 height={album.fields.cover.fields.file.details.image.height}
                 width={album.fields.cover.fields.file.details.image.width}
-
+                url={album.fields.url}
             />
         ))}
         </section>

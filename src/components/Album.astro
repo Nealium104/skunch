@@ -1,15 +1,21 @@
 ---
 import { Image } from "astro:assets";
-const {title, img, date, width, height, tracklist} = Astro.props
+const {title, img, url, date, width, height, tracklist} = Astro.props
 ---
-<div class="border-2 border-red flex flex-col md:flex-row items-center p-4">
+<div class="flex flex-col md:flex-row items-start md:items-center p-4 gap-8">
+    <div class="md:w-1/2">
         <Image class="w-full aspect-square object-cover" src={img} width={width} height={height} alt={`Image of ${title}`}/>
+    </div>
+    <div class="flex flex-col">
         <div class="flex flex-col px-4">
-            <h2 class="font-bangers text-2xl">{title}<h2>
+            <h2 class="font-bangers text-5xl">{title}<h2>
             <span class="italic text-black/50">{date}</span>
         </div>
-    <ul class="md:w-1/2">{tracklist.map(listItem => (
-            <li>{listItem}</li>
-        ))}
-    </ul>
+        <ul class="text-left">
+            {tracklist.map((listItem, index) => (
+                <li>{`${index+1}. ${listItem}`}</li>
+            ))}
+        </ul>
+        <a href={url} class="uppercase w-36 text-center rounded-full border-4 border-red my-4 py-2 px-4 font-extrabold text-2xl transition duration-150 hover:bg-red hover:text-white">Listen</a>
+    </div>
 </li>
