@@ -47,7 +47,7 @@ contentfulData.forEach((item, index) => {
                 )}
                 <div id={`image-modal-content-${index}`} class="hidden">
                   {item.fields.images && Array.isArray(item.fields.images) ? (
-                  item.fields.images.map((image, idx) => (
+                  item.fields.images.map((image) => (
                   <Image
                     src={`https:${image.fields.file.url}`}
                     alt={image.fields.title}
@@ -97,7 +97,7 @@ contentfulData.forEach((item, index) => {
 
   modalContent.innerHTML = allImagesContent;
   imageModal.showModal();
-  imageModal.scrollTop = 0; // Ensures the modal starts at the top
+  imageModal.scrollTop = 0;
 }
 
   const closeModal = () => {
