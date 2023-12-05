@@ -28,11 +28,13 @@ console.log(contentfulData[0].fields.url)
         {contentfulData.map((album: any) => (
             <Album
                 title={album.fields.title}
-                date={album.fields.date.toLocaleString('en-US', {
-                    year: "numeric",
-                    month: "numeric",
-                    day: "numeric"
-                })}
+                {album.fields.date &&
+                    date={album.fields.date.toLocaleString('en-US', {
+                        year: "numeric",
+                        month: "numeric",
+                        day: "numeric"
+                    })}
+                }
                 img={`https:${album.fields.cover.fields.file.url}`}
                 tracklist={album.fields.trackList}
                 height={album.fields.cover.fields.file.details.image.height}
