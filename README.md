@@ -44,4 +44,4 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
 ## 👀 Thanks for checking it out!
-Whether you're her for Skunch or just checking it out, I hope you got what you needed. Feel free to reach out if you want any help with any of these technologies.
+Whether you're here for Skunch or just checking it out, I hope you got what you needed. Feel free to reach out if you want any help with any of these technologies.
