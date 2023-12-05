@@ -1,14 +1,25 @@
-# Astro Starter Kit: Minimal
+# Hey Skunch! 🎸
 
-```sh
-npm create astro@latest -- --template minimal
+This is the source code for your website! If you need help with anything here, give me a call. Otherwise, I'd probably leave all this alone if at all possible. It's easy to fix things here, but also pretty easy to break.
+
+# Hey other developers! 🖥️
+You either came here to help Skunch work on this site in the future, or you're checking out my work. In either case, this README serves as a quick breakdown of the tools used in this project.
+
+## The Tools 🛠️
+### Astro 🚀
+I went with Astro for the meta framework. It provides some image optimzation, works as a JSX engine, has lots of cool tiny features like an easy way to use the transitions API, and is a good candidate for doing other cool stuff if you want to add a framework or whatever. You can even add multiple frameworks. It's also got a pretty low barrier to entry to start. If you can write HTML, CSS, and markdown, you can start with astro and learn JS along the way.
+
+You can find more information as well as a good tutorial on how to get started at https://astro.build/
+
+### Tailwind 🎨
+I went with tailwind for the styling. I've used it for a ton of projects. It's only a tiny bit opinionated, so you can use inline styles if you don't feel like fussing with it too much, but it's pretty easy to use. You just write classes for all the styles directly in your markup. Here's an example:
+```jsx
+<div class="flex flex-col gap-4">
+	<h1 class="text-5xl">This is my big title!</h1>
+	<span class="text-sm italic">This is my small, italicized subtitle</span>
+</div>
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+You can find a full list of utility classes at their website: https://tailwindcss.com/
 
 ## 🚀 Project Structure
 
