@@ -6,6 +6,7 @@ export default {
       bangers: ["Bangers", "sans-serif"],
       "roboto-slab": ["Roboto Slab Variable", "sans"],
       pixels: ["Pixelify Sans Variable", "sans"],
+      gloria: ["Gloria Hallelujah", "sans-serif"],
     },
     extend: {
       colors: {
