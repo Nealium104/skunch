@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Button from "./Button.astro";
 const {title, img, url, date, width, height, tracklist} = Astro.props
 ---
 <div class="flex flex-col md:flex-row items-start md:items-center p-4 gap-8">
@@ -16,6 +17,8 @@ const {title, img, url, date, width, height, tracklist} = Astro.props
                 <li>{`${index+1}. ${listItem}`}</li>
             ))}
         </ul>
-        <a href={url} class="uppercase w-36 text-center rounded-full border-4 border-red my-4 py-2 px-4 font-extrabold text-2xl transition duration-150 hover:bg-red hover:text-white">Listen</a>
+        <Button>
+            <a href={url}>Listen</a>
+        </Button>
     </div>
-</li>
+</div>

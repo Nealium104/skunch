@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import "@fontsource-variable/pixelify-sans"
 import { Image } from "astro:assets";
+import Button from "../components/Button.astro"
 
 const fetchData = async () => {
   try {
@@ -61,13 +62,18 @@ contentfulData.forEach((item, index) => {
               }
               </div>
               </div>
-                    <button class="more-button text-3xl border-2 px-4 border-black hover:bg-red hover:text-off-white hover:border-red transition duration-120">More</button>
+              <div class="more-button">
+                <Button>More</Button>
+              </div>
             </article>
         ))}
           </div>
           <dialog id="imageModal" class="modal backdrop:bg-black/50 w-screen bg-off-white md:w-2/3 p-8 items-start gap-8 border-2 border-red">
             <div class="modal-content flex flex-col gap-8" id="modal-content"></div>
-            <button class="border-2 my-4 px-2 border-black hover:bg-red text-2xl hover:text-off-white hover:border-red transition duration-120" id="close-modal">Close</button>
+            <div id="close-modal">
+              <Button>Close</Button>
+              
+            </div>
           </dialog>
         </div>
       </div>
