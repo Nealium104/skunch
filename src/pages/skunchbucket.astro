@@ -44,7 +44,7 @@ contentfulData.forEach((item, index) => {
                   />
                 ))
                 ): (
-                  <span>Sorry, no images!</span>
+                  <span>Sorry, no images were found</span>
                 )}
                 <div id={`image-modal-content-${index}`} class="hidden">
                   {item.fields.images && Array.isArray(item.fields.images) ? (
